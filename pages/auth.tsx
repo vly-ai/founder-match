@@ -74,38 +74,35 @@ const AuthPage: NextPage = () => {
 
   return (
     <StackedLayout
-      navbar={
-        <Navbar>
-          <NavbarItem href='/' aria-label='Home'>
-            <img src='/logo.svg' alt='Logo' className='h-8 w-auto' />
-          </NavbarItem>
-          <NavbarItem href='/'>Home</NavbarItem>
-          <NavbarItem href='/about'>About</NavbarItem>
-        </Navbar>
-      }
-    >
+      navbar={<Navbar>
+        <NavbarItem href='/' aria-label='Home'>
+          <img src='/logo.svg' alt='Logo' className='h-8 w-auto' />
+        </NavbarItem>
+        <NavbarItem href='/'>Home</NavbarItem>
+        <NavbarItem href='/about'>About</NavbarItem>
+      </Navbar>} sidebar={undefined}    >
       <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
         <div className='mx-auto max-w-3xl'>
           <div className='mt-10 sm:mt-0'>
             <div className='md:grid md:grid-cols-2 md:gap-6'>
               <div className='md:col-span-1'>
                 <Heading level={2}>Register</Heading>
-                {registrationError && <Alert color='red'>{registrationError}</Alert>}
+                {registrationError && <Alert color='red' onClose={()=>{}}>{registrationError}</Alert>}
                 <form onSubmit={handleRegisterSubmit(onRegisterSubmit)} className='mt-5 space-y-6'>
                   <Fieldset>
                     <Label htmlFor='register-name'>Name</Label>
                     <Input id='register-name' type='text' {...registerForm('name')} />
-                    {registerErrors.name && <Text color='red'>{registerErrors.name.message}</Text>}
+                    {registerErrors.name && <Text color='red'>{}</Text>}
                   </Fieldset>
                   <Fieldset>
                     <Label htmlFor='register-email'>Email</Label>
                     <Input id='register-email' type='email' {...registerForm('email')} />
-                    {registerErrors.email && <Text color='red'>{registerErrors.email.message}</Text>}
+                    {registerErrors.email && <Text color='red'>{}</Text>}
                   </Fieldset>
                   <Fieldset>
                     <Label htmlFor='register-password'>Password</Label>
                     <Input id='register-password' type='password' {...registerForm('password')} />
-                    {registerErrors.password && <Text color='red'>{registerErrors.password.message}</Text>}
+                    {registerErrors.password && <Text color='red'>{}</Text>}
                   </Fieldset>
                   <Button type='submit'>Register</Button>
                 </form>
@@ -117,17 +114,17 @@ const AuthPage: NextPage = () => {
 
               <div className='mt-5 md:col-span-1 md:mt-0'>
                 <Heading level={2}>Login</Heading>
-                {loginError && <Alert color='red'>{loginError}</Alert>}
+                {loginError && <Alert color='red' onClose={()=>{}}>{loginError}</Alert>}
                 <form onSubmit={handleLoginSubmit(onLoginSubmit)} className='mt-5 space-y-6'>
                   <Fieldset>
                     <Label htmlFor='login-email'>Email</Label>
                     <Input id='login-email' type='email' {...loginForm('email')} />
-                    {loginErrors.email && <Text color='red'>{loginErrors.email.message}</Text>}
+                    {loginErrors.email && <Text color='red'>{}</Text>}
                   </Fieldset>
                   <Fieldset>
                     <Label htmlFor='login-password'>Password</Label>
                     <Input id='login-password' type='password' {...loginForm('password')} />
-                    {loginErrors.password && <Text color='red'>{loginErrors.password.message}</Text>}
+                    {loginErrors.password && <Text color='red'>{}</Text>}
                   </Fieldset>
                   <Button type='submit'>Login</Button>
                 </form>
@@ -139,12 +136,12 @@ const AuthPage: NextPage = () => {
                 <Divider className='my-8' />
 
                 <Heading level={3}>Forgot Password</Heading>
-                {forgotPasswordSuccess && <Alert color='green'>{forgotPasswordSuccess}</Alert>}
+                {forgotPasswordSuccess && <Alert color='green' onClose={()=>{}}>{forgotPasswordSuccess}</Alert>}
                 <form onSubmit={handleForgotPasswordSubmit(onForgotPasswordSubmit)} className='mt-5 space-y-6'>
                   <Fieldset>
                     <Label htmlFor='forgot-password-email'>Email</Label>
                     <Input id='forgot-password-email' type='email' {...forgotPasswordForm('email')} />
-                    {forgotPasswordErrors.email && <Text color='red'>{forgotPasswordErrors.email.message}</Text>}
+                    {forgotPasswordErrors.email && <Text color='red'>{}</Text>}
                   </Fieldset>
                   <Button type='submit'>Reset Password</Button>
                 </form>

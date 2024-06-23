@@ -14,7 +14,7 @@ import { Text } from '@/components/text';
 import { Heading, Subheading } from '@/components/heading';
 import { Avatar } from '@/components/avatar';
 import { DescriptionList, DescriptionTerm, DescriptionDetails } from '@/components/description-list';
-import { Dialog, DialogPanel, DialogTitle, DialogDescription } from '@/components/dialog';
+import { Dialog, DialogTitle, DialogDescription } from '@/components/dialog';
 import { Divider } from '@/components/divider';
 import { StackedLayout } from '@/components/stacked-layout';
 
@@ -63,23 +63,20 @@ const Home: NextPage = () => {
 
   return (
     <StackedLayout
-      navbar={
-        <Navbar>
-          <NavbarSection>
-            <Image src='/logo.png' alt='Founder Match Logo' width={150} height={50} />
-            <NavbarItem href='#features'>Features</NavbarItem>
-            <NavbarItem href='#how-it-works'>How It Works</NavbarItem>
-            <NavbarItem href='#success-stories'>Success Stories</NavbarItem>
-            <NavbarItem href='#faq'>FAQ</NavbarItem>
-          </NavbarSection>
-          <NavbarSpacer />
-          <NavbarSection>
-            <NavbarItem href='/login'>Log In</NavbarItem>
-            <Button href='/signup'>Sign Up</Button>
-          </NavbarSection>
-        </Navbar>
-      }
-    >
+      navbar={<Navbar>
+        <NavbarSection>
+          <Image src='/logo.png' alt='Founder Match Logo' width={150} height={50} />
+          <NavbarItem href='#features'>Features</NavbarItem>
+          <NavbarItem href='#how-it-works'>How It Works</NavbarItem>
+          <NavbarItem href='#success-stories'>Success Stories</NavbarItem>
+          <NavbarItem href='#faq'>FAQ</NavbarItem>
+        </NavbarSection>
+        <NavbarSpacer />
+        <NavbarSection>
+          <NavbarItem href='/login'>Log In</NavbarItem>
+          <Button href='/signup'>Sign Up</Button>
+        </NavbarSection>
+      </Navbar>} sidebar={undefined}    >
       <Head>
         <title>Founder Match - Find Your Perfect Co-Founder</title>
         <meta name='description' content='Connect with like-minded entrepreneurs and find your ideal co-founder to bring your startup ideas to life.' />
@@ -126,15 +123,15 @@ const Home: NextPage = () => {
             <Subheading className='text-center mb-12'>How It Works</Subheading>
             <div className='grid grid-cols-1 gap-8 md:grid-cols-3'>
               <div className='step'>
-                <Subheading as='h3'>1. Create Your Profile</Subheading>
+                <Subheading >1. Create Your Profile</Subheading>
                 <Text>Sign up and build your detailed founder profile, showcasing your skills, experience, and vision.</Text>
               </div>
               <div className='step'>
-                <Subheading as='h3'>2. Get Matched</Subheading>
+                <Subheading>2. Get Matched</Subheading>
                 <Text>Our algorithm suggests potential co-founders based on compatibility and shared interests.</Text>
               </div>
               <div className='step'>
-                <Subheading as='h3'>3. Connect and Collaborate</Subheading>
+                <Subheading>3. Connect and Collaborate</Subheading>
                 <Text>Reach out to your matches, schedule meetings, and start building your dream team.</Text>
               </div>
             </div>
@@ -151,7 +148,7 @@ const Home: NextPage = () => {
                 <div key={story.id} className='story-slide p-4'>
                   <div className='flex justify-center space-x-4 mb-4'>
                     {story.founders.map((founder, index) => (
-                      <Avatar key={index} src={founder.profilePicture} alt={founder.name} size='lg' />
+                      <Avatar key={index} src={founder.profilePicture} alt={founder.name} />
                     ))}
                   </div>
                   <Text className='text-center mb-2'>{story.description}</Text>
@@ -211,13 +208,11 @@ const Home: NextPage = () => {
           <section className='faq py-20'>
             <Subheading className='text-center mb-12'>Frequently Asked Questions</Subheading>
             <div className='space-y-8'>
-              <Dialog>
-                <DialogPanel>
+              <Dialog onClose={()=>{}}>]
                   <DialogTitle>How does the matching algorithm work?</DialogTitle>
                   <DialogDescription>
                     Our AI-powered algorithm analyzes various factors including skills, experience, goals, and personality traits to suggest the most compatible co-founder matches.
                   </DialogDescription>
-                </DialogPanel>
               </Dialog>
               {/* Add more FAQ items */}
             </div>
